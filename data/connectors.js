@@ -1,8 +1,10 @@
 import Sequelize from 'sequelize';
 import _ from 'lodash';
 
+const config = require('../config');
 const env = process.env.NODE_ENV || 'development';
 
+var host = 'localhost';
 var dbName = 'dblite3';
 var username = 'root';
 var password = 'root';
@@ -12,17 +14,21 @@ if (env == 'development') {
   console.log("Env development");
 } else if (env == 'production') {
   console.log("Env production");
-  dbName = 'football';
-  username = 'root';
-  port = '';
+  host = config.host;
+  dbName = config.name;
+  username = config.username;
+  port = config.port;
+  password = config.password;
 }
 
+console.log("host: " + host + "| dbName: " + dbName + "| username: " + username + "| port: " + port + "| password: " + password);
+
 const db = new Sequelize(dbName, username, password, {
-  host: 'localhost',
+  host: host,
   dialect: 'mysql',
   user     : username,
   password : password,
-  port: port,
+  port: '',
   //logging: false
 });
 
