@@ -7,7 +7,8 @@ import { Sequelize,
   Championnat,
   Championnat_poule,
   Citation,
-  Matchs
+  Matchs,
+  Redaction
   } from './connectors';
 
 const resolvers = {
@@ -77,6 +78,12 @@ const resolvers = {
     },
     matchss() {
       return Matchs.findAll()
+    },
+    redaction(_, args) {
+      return Redaction.find({ where: args })
+    },
+    redactions() {
+      return Redaction.findAll()
     },
   }
 };

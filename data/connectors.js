@@ -21,14 +21,12 @@ if (env == 'development') {
   password = config.password;
 }
 
-console.log("host: " + host + "| dbName: " + dbName + "| username: " + username + "| port: " + port + "| password: " + password);
-
 const db = new Sequelize(dbName, username, password, {
   host: host,
   dialect: 'mysql',
   user     : username,
   password : password,
-  port: '',
+  port: port,
   //logging: false
 });
 
@@ -173,6 +171,32 @@ const MatchsModel = db.define('matchs', {
   freezeTableName: true,
 });
 
+const ReadactionModel = db.define('redaction', {
+  idRedaction: { type: Sequelize.INTEGER, primaryKey: true},
+  type: { type: Sequelize.INTEGER },
+  titre1: { type: Sequelize.STRING },
+  slug: { type: Sequelize.STRING },
+  titre2: { type: Sequelize.STRING },
+  corps: { type: Sequelize.STRING },
+  auteur: { type: Sequelize.INTEGER },
+  trackback: { type: Sequelize.INTEGER },
+  editable: { type: Sequelize.INTEGER },
+  publication: { type: Sequelize.STRING },
+  maj: { type: Sequelize.STRING },
+  suppression: { type: Sequelize.STRING },
+  online: { type: Sequelize.INTEGER },
+  online_before: { type: Sequelize.INTEGER },
+  lu: { type: Sequelize.INTEGER },
+  is_news: { type: Sequelize.INTEGER },
+  idMainImage: { type: Sequelize.INTEGER },
+  commentaireImage: { type: Sequelize.STRING },
+  blog_id: { type: Sequelize.INTEGER },
+  has_script: { type: Sequelize.INTEGER }
+}, {
+  timestamps: false,
+  freezeTableName: true,
+});
+
 const Auteur = db.models.auteur;
 const Category = db.models.category;
 const Administratif = db.models.administratif;
@@ -184,6 +208,7 @@ const Championnat = db.models.championnat;
 const Championnat_poule = db.models.championnat_poule;
 const Citation = db.models.citation;
 const Matchs = db.models.matchs;
+const Redaction = db.models.redaction;
 
 export { Sequelize,
   Auteur,
@@ -194,5 +219,6 @@ export { Sequelize,
   Championnat,
   Championnat_poule,
   Citation,
-  Matchs
+  Matchs,
+  Redaction
 };

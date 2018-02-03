@@ -112,6 +112,29 @@ type Matchs {
   lieux: Int
 }
 
+type Redaction {
+  idRedaction: Int!
+  type: Int!
+  titre1: String!
+  slug: String
+  titre2: String
+  corps: String!
+  auteur: Int!
+  trackback: Int!
+  editable: Int!
+  publication: String!
+  maj: String
+  suppression: String
+  online: Int!
+  online_before: Int!
+  lu: Int!
+  is_news: Int!
+  idMainImage: Int
+  commentaireImage: String
+  blog_id: Int
+  has_script: Int!
+}
+
 type Query {
   auteur(idAuteur: Int, nom: String, prenom: String, initiales: String, slug_auteur: String, email: String,
     annee: String, role: String, description: String, actif: Int): Auteur
@@ -152,6 +175,12 @@ type Query {
   journee: Int, idUsFootDom: Int, idUsFootExt: Int, qt1_d: Int, qt2_d: Int, qt3_d: Int, qt4_d: Int, qt5_d: Int,
   score_d: Int, qt1_e: Int, qt2_e: Int, qt3_e: Int, qt4_e: Int, qt5_e: Int, score_e: Int, lieux: Int): Matchs
   matchss: [Matchs]
+
+  redaction(idRedaction: Int, type: Int, titre1: String, slug: String, titre2: String,
+  corps: String, auteur: Int, trackback: Int, editable: Int, publication: String,
+  maj: String, suppression: String, online: Int, online_before: Int, lu: Int, is_news: Int,
+  idMainImage: Int, commentaireImage: String, blog_id: Int, has_script: Int): [Redaction]
+  redactions: [Redaction]
 }
 
 schema {
