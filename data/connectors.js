@@ -31,7 +31,7 @@ const db = new Sequelize(dbName, username, password, {
 });
 
 const AuteurModel = db.define('auteur', {
-  idAuteur: { type: Sequelize.INTEGER, primaryKey: true},
+  idAuteur: { type: Sequelize.INTEGER.UNSIGNED, primaryKey: true},
   idMembre: { type: Sequelize.INTEGER },
   nom: { type: Sequelize.STRING },
   prenom: { type: Sequelize.STRING },
@@ -106,7 +106,7 @@ const Blog_news_tempModel = db.define('blog_news_temp', {
 });
 
 const BreakingnewsModel = db.define('breakingnews', {
-  idRedaction: { type: Sequelize.INTEGER, primaryKey: true},
+  idRedaction: { type: Sequelize.INTEGER.UNSIGNED, primaryKey: true},
   ts: { type: Sequelize.INTEGER },
 }, {
   timestamps: false,
@@ -132,7 +132,7 @@ const Championnat_pouleModel = db.define('championnat_poule', {
 });
 
 const CitationModel = db.define('citation', {
-  idCitation: { type: Sequelize.INTEGER, primaryKey: true},
+  idCitation: { type: Sequelize.INTEGER.UNSIGNED, primaryKey: true},
   citation: { type: Sequelize.STRING },
   citationVo: { type: Sequelize.STRING },
   commentaire: { type: Sequelize.STRING },
@@ -188,13 +188,69 @@ const ReadactionModel = db.define('redaction', {
   online_before: { type: Sequelize.INTEGER },
   lu: { type: Sequelize.INTEGER },
   is_news: { type: Sequelize.INTEGER },
-  idMainImage: { type: Sequelize.INTEGER },
+  idMainImage: { type: Sequelize.INTEGER.UNSIGNED },
   commentaireImage: { type: Sequelize.STRING },
   blog_id: { type: Sequelize.INTEGER },
   has_script: { type: Sequelize.INTEGER }
 }, {
   timestamps: false,
   freezeTableName: true,
+});
+
+const FranchiseModel = db.define('franchise', {
+ idUsfoot: { type: Sequelize.INTEGER, primaryKey: true},
+ typeFranchise: { type: Sequelize.INTEGER },
+ idLigue: { type: Sequelize.INTEGER },
+ franchise: { type: Sequelize.STRING },
+ franchise2: { type: Sequelize.STRING },
+ acronyme: { type: Sequelize.STRING },
+ meilleurperf: { type: Sequelize.STRING },
+ franchiseadd: { type: Sequelize.STRING },
+ anciennom: { type: Sequelize.STRING },
+ numretire: { type: Sequelize.STRING },
+ siteofficiel: { type: Sequelize.STRING },
+ contact: { type: Sequelize.STRING },
+ adresse_stade: { type: Sequelize.STRING },
+ poule: { type: Sequelize.INTEGER.UNSIGNED },
+ headcoach: { type: Sequelize.STRING },
+ president: { type: Sequelize.STRING },
+ activites: { type: Sequelize.STRING },
+ fluxrss: { type: Sequelize.STRING },
+ facebooknom: { type: Sequelize.STRING },
+ facebookid: { type: Sequelize.STRING },
+ twitterid: { type: Sequelize.STRING },
+ twitterfan: { type: Sequelize.STRING },
+ espnId: { type: Sequelize.INTEGER },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const JoueurModel = db.define('joueur', {
+ idJoueur: { type: Sequelize.STRING, primaryKey: true},
+ idImport: { type: Sequelize.STRING },
+ srcImport: { type: Sequelize.STRING },
+ nomPrenomJoueur: { type: Sequelize.STRING },
+ nomJoueur: { type: Sequelize.STRING },
+ prenomJoueur: { type: Sequelize.STRING },
+ dateNaisJoueur: { type: Sequelize.STRING },
+ tailleJoueur: { type: Sequelize.INTEGER.UNSIGNED },
+ poidsJoueur: { type: Sequelize.INTEGER.UNSIGNED },
+ collegeJoueur: { type: Sequelize.STRING },
+ experience: { type: Sequelize.STRING },
+ draft: { type: Sequelize.STRING },
+ draftTour: { type: Sequelize.INTEGER },
+ draftChoix: { type: Sequelize.INTEGER },
+ draftFranchise: { type: Sequelize.STRING },
+ slugJoueur: { type: Sequelize.STRING },
+ urlImport: { type: Sequelize.STRING },
+ alternate_name: { type: Sequelize.STRING },
+ lastUpdate: { type: Sequelize.STRING },
+ complet: { type: Sequelize.INTEGER },
+ idNFL: { type: Sequelize.INTEGER.UNSIGNED },
+}, {
+ timestamps: false,
+ freezeTableName: true,
 });
 
 const Auteur = db.models.auteur;
@@ -209,6 +265,8 @@ const Championnat_poule = db.models.championnat_poule;
 const Citation = db.models.citation;
 const Matchs = db.models.matchs;
 const Redaction = db.models.redaction;
+const Franchise = db.models.franchise;
+const Joueur = db.models.joueur;
 
 export { Sequelize,
   Auteur,
@@ -220,5 +278,7 @@ export { Sequelize,
   Championnat_poule,
   Citation,
   Matchs,
-  Redaction
+  Redaction,
+  Franchise,
+  Joueur
 };

@@ -2,6 +2,7 @@ import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import resolvers from './resolvers';
 
 const typeDefs = `
+scalar Date
 
 type Auteur {
   idAuteur: Int!
@@ -135,8 +136,58 @@ type Redaction {
   has_script: Int!
 }
 
+type Franchise {
+ idUsfoot: Int!
+ typeFranchise: Int!
+ idLigue: Int
+ franchise: String
+ franchise2: String
+ acronyme: String
+ meilleurperf: String
+ franchiseadd: String
+ anciennom: String
+ numretire: String
+ siteofficiel: String
+ contact: String
+ adresse_stade: String
+ poule: Int
+ headcoach: String
+ president: String
+ activites: String
+ fluxrss: String
+ facebooknom: String
+ facebookid: String
+ twitterid: String
+ twitterfan: String
+ espnId: Int
+}
+
+type Joueur {
+ idJoueur: String!
+ idImport: String
+ srcImport: String
+ nomPrenomJoueur: String
+ nomJoueur: String!
+ prenomJoueur: String!
+ dateNaisJoueur: String
+ tailleJoueur: Int
+ poidsJoueur: Int
+ collegeJoueur: String
+ experience: String
+ draft: String
+ draftTour: Int
+ draftChoix: Int
+ draftFranchise: String
+ slugJoueur: String
+ urlImport: String
+ alternate_name: String
+ lastUpdate: String
+ complet: Int!
+ idNFL: Int
+}
+
 type Query {
-  auteur(idAuteur: Int, nom: String, prenom: String, initiales: String, slug_auteur: String, email: String,
+  auteur(idAuteur: Int, idMembre: Int, nom: String, prenom: String, initiales: String, slug_auteur: String, email: String,
     annee: String, role: String, description: String, actif: Int): Auteur
   auteurs: [Auteur]
 
@@ -181,6 +232,13 @@ type Query {
   maj: String, suppression: String, online: Int, online_before: Int, lu: Int, is_news: Int,
   idMainImage: Int, commentaireImage: String, blog_id: Int, has_script: Int): [Redaction]
   redactions: [Redaction]
+
+  franchise(idUsfoot: Int, typeFranchise: Int, idLigue: Int, franchise: String, franchise2: String, acronyme: String, meilleurperf: String, franchiseadd: String, anciennom: String, numretire: String, siteofficiel: String, contact: String, adresse_stade: String, poule: Int, headcoach: String, president: String, activites: String, fluxrss: String, facebooknom: String, facebookid: String, twitterid: String, twitterfan: String, espnId: Int): Franchise
+  franchises: [Franchise]
+
+  joueur(idJoueur: String, idImport: String, srcImport: String, nomPrenomJoueur: String, nomJoueur: String, prenomJoueur: String, dateNaisJoueur: String, tailleJoueur: Int, poidsJoueur: Int, collegeJoueur: String, experience: String, draft: String, draftTour: Int, draftChoix: Int, draftFranchise: String, slugJoueur: String, urlImport: String, alternate_name: String, lastUpdate: String, complet: Int, idNFL: Int): Joueur
+  joueurs: [Joueur]
+
 }
 
 schema {
@@ -190,5 +248,61 @@ schema {
 `;
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+// makeExecutableSchema({
+//   typeDefs: [`
+//     scalar Date
+//
+//     type Joueur {
+//      idJoueur: String!
+//      idImport: String
+//      srcImport: String
+//      nomPrenomJoueur: String
+//      nomJoueur: String!
+//      prenomJoueur: String!
+//      dateNaisJoueur: Date
+//      tailleJoueur: Int
+//      poidsJoueur: Int
+//      collegeJoueur: String
+//      experience: String
+//      draft: String
+//      draftTour: Int
+//      draftChoix: Int
+//      draftFranchise: String
+//      slugJoueur: String
+//      urlImport: String
+//      alternate_name: String
+//      lastUpdate: String
+//      complet: Int!
+//      idNFL: Int
+//     }
+//
+//     type Query {
+//       joueur(idJoueur: String): [Joueur]
+//     }
+//   `],
+//   resolvers: {
+//     Query: {
+//       async users({ idJoueur }) {
+//         const users = db('users');
+//         return await id ? users.where('id', id) : users;
+//       }
+//     },
+//     Date: {
+//       __parseValue(value) {
+//         return new Date(value); // value from the client
+//       },
+//       __serialize(value) {
+//         return value.getTime(); // value sent to the client
+//       },
+//       __parseLiteral(ast) {
+//         if (ast.kind === Kind.INT) {
+//           return parseInt(ast.value, 10); // ast value is always in string format
+//         }
+//         return null;
+//       }
+//     },
+//   }
+// });
 
 export default schema;

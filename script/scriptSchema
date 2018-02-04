@@ -1,1 +1,78 @@
-foobar2
+
+
+-- Beginning of Schema --
+
+type Joueur { 
+ idJoueur: String!
+ idImport: String
+ srcImport: String
+ nomPrenomJoueur: String
+ nomJoueur: String!
+ prenomJoueur: String!
+ dateNaisJoueur: Int
+ tailleJoueur: Int
+ poidsJoueur: Int
+ collegeJoueur: String
+ experience: String
+ draft: String
+ draftTour: Int
+ draftChoix: Int
+ draftFranchise: String
+ slugJoueur: String
+ urlImport: String
+ alternate_name: String
+ lastUpdate: String
+ complet: Int!
+ idNFL: Int
+}
+
+-- End of Schema --
+-- Beginning of Query --
+
+joueur(idJoueur: String, idImport: String, srcImport: String, nomPrenomJoueur: String, nomJoueur: String, prenomJoueur: String, dateNaisJoueur: Int, tailleJoueur: Int, poidsJoueur: Int, collegeJoueur: String, experience: String, draft: String, draftTour: Int, draftChoix: Int, draftFranchise: String, slugJoueur: String, urlImport: String, alternate_name: String, lastUpdate: String, complet: Int, idNFL: Int, ): Joueur
+joueurs: [Joueur]
+
+
+-- End of Query --
+-- Beginning of Resolver --
+
+joueur(_, args) {
+ return Joueur.find({ where: args })
+},
+joueurs() {
+ return Joueur.findAll()
+},
+
+-- End of Resolver --
+-- Beginning of Connectors --
+
+const JoueurModel = db.define('joueur', {
+ idJoueur: { type: Sequelize.STRING },
+ idImport: { type: Sequelize.STRING },
+ srcImport: { type: Sequelize.STRING },
+ nomPrenomJoueur: { type: Sequelize.STRING },
+ nomJoueur: { type: Sequelize.STRING },
+ prenomJoueur: { type: Sequelize.STRING },
+ dateNaisJoueur: { type: Sequelize.INTEGER },
+ tailleJoueur: { type: Sequelize.INTEGER },
+ poidsJoueur: { type: Sequelize.INTEGER },
+ collegeJoueur: { type: Sequelize.STRING },
+ experience: { type: Sequelize.STRING },
+ draft: { type: Sequelize.STRING },
+ draftTour: { type: Sequelize.INTEGER },
+ draftChoix: { type: Sequelize.INTEGER },
+ draftFranchise: { type: Sequelize.STRING },
+ slugJoueur: { type: Sequelize.STRING },
+ urlImport: { type: Sequelize.STRING },
+ alternate_name: { type: Sequelize.STRING },
+ lastUpdate: { type: Sequelize.STRING },
+ complet: { type: Sequelize.INTEGER },
+ idNFL: { type: Sequelize.INTEGER },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const Joueur = db.models.joueur;
+
+-- End of Connectors --
