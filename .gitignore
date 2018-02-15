@@ -59,3 +59,12 @@ typings/
 
 # config file
 config.js
+
+# script launch file
+launch.sh*
+
+# databases files
+*sql
+
+# temporary files
+*~
