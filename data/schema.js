@@ -89,6 +89,83 @@ type Citation {
   reelle: Int!
 }
 
+type Commentaire_captcha {
+ idCmt: Int!
+ questionCmt: String!
+ reponseCmt: String!
+}
+
+type Competition {
+ idCompetition: Int!
+ slug_competition: String
+ ligue: Int!
+ championnat: Int
+ saison: Int!
+ current_week: Int!
+ current_poz_week: Int!
+ libCompetition: String
+ active: Int!
+}
+
+type Competition_groupe_equipe {
+ idCompetition: Int!
+ idGroupe: String
+ idEquipe: Int!
+}
+
+type Conference {
+ idConf: Int!
+ conf: String!
+ conf_long: String!
+}
+
+type Conference_division {
+ idConference: Int!
+ idDiv: Int!
+}
+
+type Connectes {
+ idUser: Int!
+ timeinsec: Int!
+}
+
+type Contact_message {
+ idMsg: Int!
+ nomMsg: String!
+ emailMsg: String!
+ sitewebMsg: String
+ ipMsg: String!
+ objetMsg: String
+ messageMsg: String!
+ timestampMsg: Int!
+}
+
+type Division {
+ idDiv: Int!
+ division: String!
+}
+
+type Division_franchise {
+ idDiv: Int!
+ idFranchise: Int!
+}
+
+type Dossier {
+ idDossier: Int!
+ idSection: Int!
+ page: Int!
+ position: Int
+ dossierIdSection: Int
+ idRedaction: Int
+ pageCible: Int
+ page_cible_slug: String
+}
+
+type Draft {
+ idDraft: Int!
+ libDraft: String!
+}
+
 type Matchs {
   idMatch: Int!
   idCompetition: Int!
@@ -221,6 +298,39 @@ type Query {
   citation(idCitation: Int, citation: String, citationVo: String, commentaire: String,
   auteur: String, vote: Int, reelle: Int): Citation
   citations: [Citation]
+
+  commentaire_captcha(idCmt: Int, questionCmt: String, reponseCmt: String): Commentaire_captcha
+  commentaire_captchas: [Commentaire_captcha]
+
+  competition(idCompetition: Int, slug_competition: String, ligue: Int, championnat: Int, saison: Int, current_week: Int, current_poz_week: Int, libCompetition: String, active: Int): Competition
+  competitions: [Competition]
+
+  competition_groupe_equipe(idCompetition: Int, idGroupe: String, idEquipe: Int): Competition_groupe_equipe
+  competition_groupe_equipes: [Competition_groupe_equipe]
+
+  conference(idConf: Int, conf: String, conf_long: String): Conference
+  conferences: [Conference]
+
+  conference_division(idConference: Int, idDiv: Int): Conference_division
+  conference_divisions: [Conference_division]
+
+  connectes(idUser: Int, timeinsec: Int): Connectes
+  connectess: [Connectes]
+
+  contact_message(idMsg: Int, nomMsg: String, emailMsg: String, sitewebMsg: String, ipMsg: String, objetMsg: String, messageMsg: String, timestampMsg: Int): Contact_message
+  contact_messages: [Contact_message]
+
+  division(idDiv: Int, division: String): Division
+  divisions: [Division]
+
+  division_franchise(idDiv: Int, idFranchise: Int): Division_franchise
+  division_franchises: [Division_franchise]
+
+  dossier(idDossier: Int, idSection: Int, page: Int, position: Int, dossierIdSection: Int, idRedaction: Int, pageCible: Int, page_cible_slug: String): Dossier
+  dossiers: [Dossier]
+
+  draft(idDraft: Int, libDraft: String): Draft
+  drafts: [Draft]
 
   matchs(idMatch: Int, idCompetition: Int, typeMatch: Int, dateMatch: String, heureMatch: String,
   journee: Int, idUsFootDom: Int, idUsFootExt: Int, qt1_d: Int, qt2_d: Int, qt3_d: Int, qt4_d: Int, qt5_d: Int,

@@ -144,8 +144,118 @@ const CitationModel = db.define('citation', {
   freezeTableName: true,
 });
 
+const Commentaire_captchaModel = db.define('commentaire_captcha', {
+ idCmt: { type: Sequelize.INTEGER, primaryKey: true },
+ questionCmt: { type: Sequelize.STRING },
+ reponseCmt: { type: Sequelize.STRING },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const CompetitionModel = db.define('competition', {
+ idCompetition: { type: Sequelize.INTEGER, primaryKey: true },
+ slug_competition: { type: Sequelize.STRING },
+ ligue: { type: Sequelize.INTEGER },
+ championnat: { type: Sequelize.INTEGER },
+ saison: { type: Sequelize.INTEGER },
+ current_week: { type: Sequelize.INTEGER },
+ current_poz_week: { type: Sequelize.INTEGER },
+ libCompetition: { type: Sequelize.STRING },
+ active: { type: Sequelize.INTEGER },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const Competition_groupe_equipeModel = db.define('competition_groupe_equipe', {
+ idCompetition: { type: Sequelize.INTEGER, primaryKey: true },
+ idGroupe: { type: Sequelize.STRING },
+ idEquipe: { type: Sequelize.INTEGER },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const ConferenceModel = db.define('conference', {
+ idConf: { type: Sequelize.INTEGER, primaryKey: true },
+ conf: { type: Sequelize.STRING },
+ conf_long: { type: Sequelize.STRING },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const Conference_divisionModel = db.define('conference_division', {
+ idConference: { type: Sequelize.INTEGER, primaryKey: true },
+ idDiv: { type: Sequelize.INTEGER },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const ConnectesModel = db.define('connectes', {
+ idUser: { type: Sequelize.INTEGER, primaryKey: true },
+ timeinsec: { type: Sequelize.INTEGER },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const Contact_messageModel = db.define('contact_message', {
+ idMsg: { type: Sequelize.INTEGER, primaryKey: true },
+ nomMsg: { type: Sequelize.STRING },
+ emailMsg: { type: Sequelize.STRING },
+ sitewebMsg: { type: Sequelize.STRING },
+ ipMsg: { type: Sequelize.STRING },
+ objetMsg: { type: Sequelize.STRING },
+ messageMsg: { type: Sequelize.STRING },
+ timestampMsg: { type: Sequelize.INTEGER },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const DivisionModel = db.define('division', {
+ idDiv: { type: Sequelize.INTEGER, primaryKey: true },
+ division: { type: Sequelize.STRING },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const Division_franchiseModel = db.define('division_franchise', {
+ idDiv: { type: Sequelize.INTEGER, primaryKey: true },
+ idFranchise: { type: Sequelize.INTEGER },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const DossierModel = db.define('dossier', {
+ idDossier: { type: Sequelize.INTEGER, primaryKey: true },
+ idSection: { type: Sequelize.INTEGER },
+ page: { type: Sequelize.INTEGER },
+ position: { type: Sequelize.INTEGER },
+ dossierIdSection: { type: Sequelize.INTEGER },
+ idRedaction: { type: Sequelize.INTEGER },
+ pageCible: { type: Sequelize.INTEGER },
+ page_cible_slug: { type: Sequelize.STRING },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
+const DraftModel = db.define('draft', {
+ idDraft: { type: Sequelize.INTEGER, primaryKey: true },
+ libDraft: { type: Sequelize.STRING },
+}, {
+ timestamps: false,
+ freezeTableName: true,
+});
+
 const MatchsModel = db.define('matchs', {
-  idMatch: { type: Sequelize.INTEGER, primaryKey: true},
+  idMatch: { type: Sequelize.INTEGER, primaryKey: true },
   idCompetition: { type: Sequelize.INTEGER },
   typeMatch: { type: Sequelize.INTEGER },
   dateMatch: { type: Sequelize.STRING },
@@ -263,6 +373,17 @@ const Breakingnews = db.models.breakingnews;
 const Championnat = db.models.championnat;
 const Championnat_poule = db.models.championnat_poule;
 const Citation = db.models.citation;
+const Commentaire_captcha = db.models.commentaire_captcha;
+const Competition = db.models.competition;
+const Competition_groupe_equipe = db.models.competition_groupe_equipe;
+const Conference = db.models.conference;
+const Conference_division = db.models.conference_division;
+const Connectes = db.models.connectes;
+const Contact_message = db.models.contact_message;
+const Division = db.models.division;
+const Division_franchise = db.models.division_franchise;
+const Dossier = db.models.dossier;
+const Draft = db.models.draft;
 const Matchs = db.models.matchs;
 const Redaction = db.models.redaction;
 const Franchise = db.models.franchise;
@@ -277,6 +398,17 @@ export { Sequelize,
   Championnat,
   Championnat_poule,
   Citation,
+  Commentaire_captcha,
+  Competition,
+  Competition_groupe_equipe,
+  Conference,
+  Conference_division,
+  Connectes,
+  Contact_message,
+  Division,
+  Division_franchise,
+  Dossier,
+  Draft,
   Matchs,
   Redaction,
   Franchise,

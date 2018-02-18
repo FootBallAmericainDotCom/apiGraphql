@@ -7,6 +7,17 @@ import { Sequelize,
   Championnat,
   Championnat_poule,
   Citation,
+  Commentaire_captcha,
+  Competition,
+  Competition_groupe_equipe,
+  Conference,
+  Conference_division,
+  Connectes,
+  Contact_message,
+  Division,
+  Division_franchise,
+  Dossier,
+  Draft,
   Matchs,
   Redaction,
   Franchise,
@@ -74,6 +85,72 @@ const resolvers = {
     },
     citations() {
       return Citation.findAll()
+    },
+    commentaire_captcha(_, args) {
+     return Commentaire_captcha.find({ where: args })
+    },
+    commentaire_captchas() {
+     return Commentaire_captcha.findAll()
+    },
+    competition(_, args) {
+     return Competition.find({ where: args })
+    },
+    competitions() {
+     return Competition.findAll()
+    },
+    competition_groupe_equipe(_, args) {
+     return Competition_groupe_equipe.find({ where: args })
+    },
+    competition_groupe_equipes() {
+     return Competition_groupe_equipe.findAll()
+    },
+    conference(_, args) {
+     return Conference.find({ where: args })
+    },
+    conferences() {
+     return Conference.findAll()
+    },
+    conference_division(_, args) {
+     return Conference_division.find({ where: args })
+    },
+    conference_divisions() {
+     return Conference_division.findAll()
+    },
+    connectes(_, args) {
+     return Connectes.find({ where: args })
+    },
+    connectess() {
+     return Connectes.findAll()
+    },
+    contact_message(_, args) {
+     return Contact_message.find({ where: args })
+    },
+    contact_messages() {
+     return Contact_message.findAll()
+    },
+    division(_, args) {
+     return Division.find({ where: args })
+    },
+    divisions() {
+     return Division.findAll()
+    },
+    division_franchise(_, args) {
+     return Division_franchise.find({ where: args })
+    },
+    division_franchises() {
+     return Division_franchise.findAll()
+    },
+    dossier(_, args) {
+     return Dossier.find({ where: args })
+    },
+    dossiers() {
+     return Dossier.findAll()
+    },
+    draft(_, args) {
+     return Draft.find({ where: args })
+    },
+    drafts() {
+     return Draft.findAll()
     },
     matchs(_, args) {
       return Matchs.find({ where: args })
