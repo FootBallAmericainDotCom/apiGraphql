@@ -27,154 +27,79 @@ import { Sequelize,
 const resolvers = {
   Query: {
     auteur(_, args) {
-      return Auteur.find({ where: args });
-    },
-    auteurs() {
-      return Auteur.findAll();
+      return Auteur.findAll({ where: args });
     },
     category(_, args) {
-      return Category.find({ where: args });
-    },
-    categorys() {
-      return Category.findAll();
+      return Category.findAll({ where: args });
     },
     administratif(_, args) {
-      return Administratif.find({ where: args });
-    },
-    administratifs() {
-      return Administratif.findAll();
+      return Administratif.findAll({ where: args });
     },
     blog(_, args) {
-      return Blog.find({ where: args });
-    },
-    blogs() {
-      return Blog.findAll();
+      return Blog.findAll({ where: args });
     },
     blog_auteur(_, args) {
-      return Blog_auteur.find({ where: args });
-    },
-    blog_auteurs() {
-      return Blog_auteur.findAll();
+      return Blog_auteur.findAll({ where: args });
     },
     blog_news_temp(_, args) {
-      return Blog_news_temp.find({ where: args });
-    },
-    blog_news_temps() {
-      return Blog_news_temp.findAll();
+      return Blog_news_temp.findAll({ where: args });
     },
     breakingnews(_, args) {
-      return Breakingnews.find({ where: args });
-    },
-    breakingnewss() {
-      return Breakingnews.findAll();
+      return Breakingnews.findAll({ where: args });
     },
     championnat(_, args) {
-      return Championnat.find({ where: args })
-    },
-    championnats() {
-      return Championnat.findAll()
+      return Championnat.findAll({ where: args })
     },
     championnat_poule(_, args) {
-      return Championnat_poule.find({ where: args })
-    },
-    championnat_poules() {
-      return Championnat_poule.findAll()
+      return Championnat_poule.findAll({ where: args })
     },
     citation(_, args) {
-      return Citation.find({ where: args })
-    },
-    citations() {
-      return Citation.findAll()
+      return Citation.findAll({ where: args })
     },
     commentaire_captcha(_, args) {
-     return Commentaire_captcha.find({ where: args })
-    },
-    commentaire_captchas() {
-     return Commentaire_captcha.findAll()
+     return Commentaire_captcha.findAll({ where: args })
     },
     competition(_, args) {
-     return Competition.find({ where: args })
-    },
-    competitions() {
-     return Competition.findAll()
+     return Competition.findAll({ where: args })
     },
     competition_groupe_equipe(_, args) {
-     return Competition_groupe_equipe.find({ where: args })
-    },
-    competition_groupe_equipes() {
-     return Competition_groupe_equipe.findAll()
+     return Competition_groupe_equipe.findAll({ where: args })
     },
     conference(_, args) {
-     return Conference.find({ where: args })
-    },
-    conferences() {
-     return Conference.findAll()
+     return Conference.findAll({ where: args })
     },
     conference_division(_, args) {
-     return Conference_division.find({ where: args })
-    },
-    conference_divisions() {
-     return Conference_division.findAll()
+     return Conference_division.findAll({ where: args })
     },
     connectes(_, args) {
-     return Connectes.find({ where: args })
-    },
-    connectess() {
-     return Connectes.findAll()
+     return Connectes.findAll({ where: args })
     },
     contact_message(_, args) {
-     return Contact_message.find({ where: args })
-    },
-    contact_messages() {
-     return Contact_message.findAll()
+     return Contact_message.findAll({ where: args })
     },
     division(_, args) {
-     return Division.find({ where: args })
-    },
-    divisions() {
-     return Division.findAll()
+     return Division.findAll({ where: args })
     },
     division_franchise(_, args) {
-     return Division_franchise.find({ where: args })
-    },
-    division_franchises() {
-     return Division_franchise.findAll()
+     return Division_franchise.findAll({ where: args })
     },
     dossier(_, args) {
-     return Dossier.find({ where: args })
-    },
-    dossiers() {
-     return Dossier.findAll()
+     return Dossier.findAll({ where: args })
     },
     draft(_, args) {
-     return Draft.find({ where: args })
-    },
-    drafts() {
-     return Draft.findAll()
+     return Draft.findAll({ where: args })
     },
     matchs(_, args) {
-      return Matchs.find({ where: args })
-    },
-    matchss() {
-      return Matchs.findAll()
+      return Matchs.findAll({ where: args })
     },
     redaction(_, args) {
-      return Redaction.find({ where: args })
-    },
-    redactions() {
-      return Redaction.findAll()
+      return Redaction.findAll({ where: args })
     },
     franchise(_, args) {
-     return Franchise.find({ where: args })
-    },
-    franchises() {
-     return Franchise.findAll()
+     return Franchise.findAll({ where: args })
     },
     joueur(_, args) {
-     return Joueur.find({ where: args })
-    },
-    joueurs() {
-     return Joueur.findAll()
+     return Joueur.findAll({ where: args })
     },
   }
 };
