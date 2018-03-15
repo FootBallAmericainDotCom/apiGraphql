@@ -25,6 +25,7 @@
     "graphql-tools": "^2.13.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.13.2",
+    "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
     "node-fetch": "^1.7.3",
     "sequelize": "^4.31.2",
